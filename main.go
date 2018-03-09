@@ -25,7 +25,7 @@ func HealthCheck(w http.ResponseWriter, r *http.Request)  {
 }
 
 func DbCheck(w http.ResponseWriter, r *http.Request) {
-	db, err := sql.Open("postgres", "postgres://postgres:password@172.17.0.6/alerts?sslmode=disable")
+	db, err := sql.Open("postgres", "postgres://postgres:password@localhost/alerts?sslmode=disable")
 	if err != nil {
 		log.Error(err)
 		http.Error(w, err.Error(), 400)
