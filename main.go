@@ -16,12 +16,12 @@ func main() {
 
 	log.Fatal(http.ListenAndServe(":8000", r))
 	fmt.Println("Webserver is up")
-	log.Println("API server is up")
+	log.Infof("API server is up")
 }
 
 func HealthCheck(w http.ResponseWriter, r *http.Request)  {
 	fmt.Fprintln(w, "Server UP")
-	log.Println("HealthChecked")
+	log.Info("HealthChecked")
 }
 
 func DbCheck(w http.ResponseWriter, r *http.Request) {
@@ -34,5 +34,6 @@ func DbCheck(w http.ResponseWriter, r *http.Request) {
 		log.Error(err)
 		http.Error(w, err.Error(), 400)
 	}
-	fmt.Fprint(w, "Can ping db")
+	fmt.Fprintln(w, "Can ping db")
+
 }
